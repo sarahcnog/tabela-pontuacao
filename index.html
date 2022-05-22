@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Tabela de pontuação </title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<html>
+
+<body>
+  <div class="container-head">
+    <img src="https://i.ibb.co/thT7cFv/Projeto-P4-Logo.png" width=70px alt="">
+    <br><br>
+    <h1 class="page-title">
+      TABELA DE PONTUAÇÃO</h1>
+    <br>
+    <p class="page-subtitle">
+      Faça o acompanhamento dos jogadores no seu jogo.
+    </p><br>
+    <div class="linha">
+      <div class="coluna-50">
+        <p class="texto">
+          PESO DAS AÇÕES:</p>
+        <div class="form-wrapper">
+          <input type="number" id="pesoVitoriaId" placeholder="Peso das vitórias"><br>
+          <input type="number" id="pesoEmpateId" placeholder="Peso dos empates"><br>
+          <input type="number" id="pesoDerrotaId" placeholder="Peso das derrotas"><br>
+          <button onClick="pesos()" id="pesos" abled="true">
+            Criar pesos</button>
+        </div>
+      </div>
+      <div class="coluna-50">
+        <p class="texto">
+          JOGADORES:</p>
+        <div class="form-wrapper">
+          <input type="text" id="nomeJogador" placeholder="Nome do jogador">
+          <input type="text" id="fotoJogador" placeholder="URL Foto do jogador"><br>
+          <input type="text" id="linkJogador" placeholder="Rede social do Jogador"><br>
+          <button onClick="adicionarJogador()" id="addJogador" disabled="true">
+            Adicionar jogador</button>
+        </div>
+      </div>
+    </div>
+    <button id="zerarPlacar" onClick="zerarPlacar()">Zerar placar</button> <button id="novoJogo" onClick="novoJogo()">Novo jogo</button>
+    <br><br>
+    <div class="placar" id="placar2"></div>
+    <div class="placar" id="placar1"></div>
+    <div class="placar" id="placar3"></div>
+    <br><br>
+  </div>
+  <div class="container-body" id="container-body">
+    <table style="width:100%" id="table" hidden="true">
+      <thead>
+        <tr>
+          <th>Jogador</th>
+          <th>Vitórias</th>
+          <th>Empates</th>
+          <th>Derrotas</th>
+          <th>Pontos</th>
+          <th colspan="5">Ações</th>
+        </tr>
+      </thead>
+      <tbody id="tabelaJogadores"></tbody>
+    </table>
+
+  </div>
+  <a href="https://www.linkedin.com/in/sarahcnog/" target="_blank"><img src="https://i.ibb.co/gP3ffb8/logo2.png" alt="blank" class="page-logo"><a>
+</body>
+
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
