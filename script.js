@@ -2,6 +2,9 @@
 
 var jogadores = [];
 document.getElementById("container-body").style.display = "none";
+document.getElementById("placar1").style.display = "none";
+document.getElementById("placar2").style.display = "none";
+document.getElementById("placar3").style.display = "none";
 
 // ----------- Funções jogador
 
@@ -10,10 +13,16 @@ function adicionarJogador() {
   nomeJogador = nomeJogador2.value;
   fotoJogador2 = document.getElementById("fotoJogador");
   fotoJogador =
-    "<img src='" + fotoJogador2.value + "' alt='blank' class='page-logo'>";
+    "<img src='" + fotoJogador2.value + "' alt='blank' class='foto-jogador'>";
+  linkJogador2 = document.getElementById("linkJogador");
+  linkJogador =
+    "<a href='" +
+    linkJogador2.value +
+    "' target='blank' class='link-jogador'>@</a>";
   var add = {
     nome: nomeJogador,
     foto: fotoJogador,
+    link: linkJogador,
     vitorias: 0,
     empates: 0,
     derrotas: 0,
@@ -51,7 +60,6 @@ function calculaPontos(jogador) {
     jogador.empates * pesoEmpate +
     jogador.derrotas * pesoDerrota;
   return pontos;
-  findLargest3();
 }
 
 // ----------- Exibir informações na tela
@@ -106,6 +114,7 @@ function adicionarVitoria(i) {
   jogador.vitorias++;
   jogador.pontos = calculaPontos(jogador);
   exibeJogadoresNaTela(jogadores);
+  findLargest3();
 }
 
 function adicionarDerrota(i) {
@@ -113,6 +122,7 @@ function adicionarDerrota(i) {
   jogador.derrotas++;
   jogador.pontos = calculaPontos(jogador);
   exibeJogadoresNaTela(jogadores);
+  findLargest3();
 }
 
 function adicionarEmpate(i) {
@@ -120,6 +130,7 @@ function adicionarEmpate(i) {
   jogador.empates++;
   jogador.pontos = calculaPontos(jogador);
   exibeJogadoresNaTela(jogadores);
+  findLargest3();
 }
 
 // ----------- Removendo vitórias, empates e derrotas
@@ -132,6 +143,7 @@ function removerVitoria(i) {
     jogador.vitorias--;
     jogador.pontos = calculaPontos(jogador);
     exibeJogadoresNaTela(jogadores);
+    findLargest3();
   }
 }
 
@@ -143,6 +155,7 @@ function removerDerrota(i) {
     jogador.derrotas--;
     jogador.pontos = calculaPontos(jogador);
     exibeJogadoresNaTela(jogadores);
+    findLargest3();
   }
 }
 
@@ -154,6 +167,7 @@ function removerEmpate(i) {
     jogador.empates--;
     jogador.pontos = calculaPontos(jogador);
     exibeJogadoresNaTela(jogadores);
+    findLargest3();
   }
 }
 
@@ -164,6 +178,9 @@ function zerarPlacar() {
   for (var i = 0; i < tamanho; i++) {
     zeraJogador(i);
   }
+  document.getElementById("placar1").style.display = "none";
+  document.getElementById("placar2").style.display = "none";
+  document.getElementById("placar3").style.display = "none";
 }
 
 function zeraJogador(i) {
@@ -173,21 +190,43 @@ function zeraJogador(i) {
   jogador.vitorias = 0;
   jogador.pontos = 0;
   exibeJogadoresNaTela(jogadores);
+  findLargest3();
 }
 
-// Função novo jogo **
+// ----------- Função novo jogo
 
 function novoJogo() {
   document.location.reload(true);
 }
 
-// Print placar **
+// ----------- Print placar
 
-function placarBest3() {
+function findLargest3() {
+  var novaOrdem = jogadores.slice();
+  const ordena = novaOrdem.sort((a, b) => {
+    return b.pontos - a.pontos;
+  });
+
+  place1 = novaOrdem[0];
+  place2 = novaOrdem[1];
+  place3 = novaOrdem[2];
+
   var placar1 = document.getElementById("placar1");
+  var placar1nome = "🥇 " + place1.nome;
+  var placar1foto = place1.foto;
+  var placar1link = place1.link;
+  placar1.innerHTML = placar1foto + "<br>" + placar1nome + "<br>" + placar1link;
   var placar2 = document.getElementById("placar2");
+  var placar2nome = "🥈 " + place2.nome;
+  var placar2foto = place2.foto;
+  var placar2link = place2.link;
+  placar2.innerHTML = placar2foto + "<br>" + placar2nome + "<br>" + placar2link;
   var placar3 = document.getElementById("placar3");
-  placar1.innerHTML = foto1;
-  placar2.innerHTML = foto2;
-  placar3.innerHTML = foto3;
+  var placar3nome = "🥉 " + place3.nome;
+  var placar3foto = place3.foto;
+  var placar3link = place3.link;
+  placar3.innerHTML = placar3foto + "<br>" + placar3nome + "<br>" + placar3link;
+  document.getElementById("placar1").style.display = "";
+  document.getElementById("placar2").style.display = "";
+  document.getElementById("placar3").style.display = "";
 }
