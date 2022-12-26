@@ -1,6 +1,6 @@
 # TABELA DE PONTUAÇÃO
 
-| :placard: Vitrine.Dev | https://cursos.alura.com.br/vitrinedev/sarahcnog  |
+| :placard: Vitrine.Dev |   |
 | -------------  | --- |
 | :sparkles: Nome        | **Tabela de Pontuação**
 | :label: Tecnologias | java, html, CSS
